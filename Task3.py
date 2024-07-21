@@ -24,6 +24,7 @@ class LogisticRegression2:
     def fit(self, X, y):
 
         y = y.reshape(-1, 1)
+        n_samples, n_features = X_train.shape
 
         self.weights = np.random.randn(n_features,1)/np.sqrt(n_features)
         self.bias = np.random.randn(1,1)
