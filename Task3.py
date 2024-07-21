@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import r2_score, mean_squared_error, accuracy_score, classification_report, confusion_matrix
 
 
 def sigmoid(z):
@@ -69,15 +69,17 @@ X_test_normal_ds = pd.DataFrame(X_test_normal)
 
 
 # Self LogisticRegression
-logreg = LogisticRegression2(learning_rate=0.05, epochs=100)#0.005,10
+logreg = LogisticRegression2(learning_rate=0.05, epochs=1000)#0.005,10
 logreg.fit(X_train, y_train)
 y_pred2 = logreg.predict(X_test)
 
 mse_test_self = mean_squared_error(y_test, y_pred2)
 r2_self = r2_score(y_test, y_pred2)
+accuracy2 = accuracy_score(y_test, y_pred2)
 
-print(mse_test_self)
-print(r2_self)
+#print(mse_test_self)
+#print(r2_self)
+#print(accuracy2)
 
 #LogisticRegression function
 logr=LogisticRegression()
@@ -88,9 +90,18 @@ linear_predictions = logr.predict(X_test_normal)
 linear_mse = mean_squared_error(y_test, linear_predictions)
 
 linear_r2 = r2_score(y_test, linear_predictions)
+linear_accuracy = accuracy_score(y_test, y_pred)
 
 #print(linear_mse)
 #print(linear_r2)
+#print(linear_accuracy)
+
+#Best fitted out of two models
+report = classification_report(y_test, y_pred, target_names=data.target_names)
+cm = confusion_matrix(y_test, y_pred)
+
+print(report)
+print(cm)
 
 
 
