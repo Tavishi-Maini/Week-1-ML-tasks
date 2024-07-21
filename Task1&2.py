@@ -50,14 +50,14 @@ class LinearRegression:
 
 ds=pd.read_csv(".\\archive\\Real estate.csv")
 
-#print("The number of null values in the datasets is",ds.isnull().sum().sum())
+print("The number of null values in the datasets is",ds.isnull().sum().sum())
 
-#for i in range(1,7):
-    #plt.scatter(ds.iloc[:,i], ds.iloc[:,7])
-    #plt.xlabel(f"Column {i}")
-    #plt.ylabel("Last Column")
-    #plt.title(f"Figure {i}")
-    #plt.show()
+for i in range(1,7):
+    plt.scatter(ds.iloc[:,i], ds.iloc[:,7])
+    plt.xlabel(f"Column {i}")
+    plt.ylabel("Last Column")
+    plt.title(f"Figure {i}")
+    plt.show()
 
 ds=ds.drop(columns=['No', 'X1 transaction date', 'X5 latitude' ,'X6 longitude']) 
 
